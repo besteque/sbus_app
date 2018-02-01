@@ -46,13 +46,14 @@ typedef enum tag_MODULE
 }MODULE_DEF;
 
 
-#define PRINT_SYS_MSG(level, module, fmt, ...)	\
+//may be '__VA_ARGS__' or '##__VA_ARGS__' or '##args'
+#define PRINT_SYS_MSG(level, module, fmt, args...)	\
 	do{											\
 		if (level == MSG_LOG_DBG) {				\
-			print_sys_msg(#module, fmt, __VA_ARGS__);\
+			print_sys_msg(#module, fmt, ##args);\
 		}										\
 		else {									\
-			rel_slogf(fmt, __VA_ARGS__);		\
+			rel_slogf(fmt, ##args);		\
 		}										\
 	}while(0)
 

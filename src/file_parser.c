@@ -61,20 +61,8 @@ int create_fle(char *path, char *name)
 	else
 		strcat(file_path_name, name);
 
-	/* append to the end of an existing file */
 	/* write a new file if file doesn't exist */
 	/* with full read/write permissions */
-	/*fd = open( file_path_name,
-			O_WRONLY | O_CREAT,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH );*/
-
-	/* for test */
-	if (file_desc != -1)
-	{
-		close(file_desc);
-		remove(file_path_name);
-	}
-
 	fd = open(file_path_name, O_RDWR | O_CREAT,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH );
 

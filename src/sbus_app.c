@@ -140,6 +140,7 @@ int main(int argc, char *argv[])
 	uint64_t begin, nsec;
 	//char now_tm[DATE_TIME_STR_LEN_MAX] = {0};
 
+	PRINT_SYS_MSG(MSG_LOG_DBG, SPI, "1111111111111\n");
 
 	/* for test */
 	int j = 0, dbg_q = 0;
@@ -158,6 +159,12 @@ int main(int argc, char *argv[])
 
 
 	/* initialize */
+	//HMI_NEWTORK_SIGNAL_WRITE(NW_SIL_INIT_DATA, SBUS_SH_INIT_STATUS,
+	//		NW_SIL_SBUS_INIT_DATA_INIT_STATUS_INIT_START);
+	HMI_NEWTORK_SIGNAL_WRITE(NW_SIL_INIT_DATA, SBUS_SH_INIT_STATUS,
+			NW_SIL_SBUS_INIT_DATA_INIT_STATUS_INIT_START);
+
+	// invoke for the 2st times will lead to memory fault,WHY?
 	nw_sil_init(app_sil_callback);
 
 	HMI_NEWTORK_SIGNAL_WRITE(NW_SIL_INIT_DATA, SBUS_SH_INIT_STATUS,
